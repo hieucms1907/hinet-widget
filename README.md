@@ -1,4 +1,5 @@
 #Nhúng vào bất cứ đâu trong thẻ body
+````
 <div id="HiNet-root"></div>
 <script crossorigin="anonymous" src="/HiNet-Widget.js"></script>
 <script>
@@ -11,3 +12,4 @@
         new HiNetWidget(widgetOptions);
     });
 </script>
+````
