@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *, body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="HiNet-root"></div>
+    <script crossorigin="anonymous" src="https://raw.githubusercontent.com/hieucms1907/hinet-widget/main/HiNet-Widget.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var widgetOptions = {
+                action: 'url gửi báo cáo',
+                method : 'Post, get',
+                title : 'Tiêu đề báo cáo'
+            };
+            new HiNetWidget(widgetOptions);
+        });
+        
+    </script>
+</body>
+</html>
