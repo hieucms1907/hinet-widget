@@ -3,7 +3,6 @@
  * Author: HieuCMS - HiNet JSC 
  * 
  */
-
 function HiNetWidget(options) {
     this.options = options || {};
     this.container = null;
@@ -121,6 +120,11 @@ HiNetWidget.prototype.createWidgetContainer = function() {
     divGroupContent.appendChild(inputContent);
     body.appendChild(divGroupContent);
 
+    var captcha = document.createElement("div");
+    captcha.className = "hinet-widget-form_group"
+    captcha.id = "captcha-container";
+    body.appendChild(captcha);
+
     var buttonSubmit = document.createElement("button");
     buttonSubmit.className = "hinet-widget-submit";
     buttonSubmit.style = "padding: 8px 20px;outline: none;border: none;background-color: #5190dd;color: #fff;border-radius: 4px;cursor: pointer;margin-top: 5px;";
@@ -129,9 +133,31 @@ HiNetWidget.prototype.createWidgetContainer = function() {
         self.sendData();
     }
     body.appendChild(buttonSubmit);
-
     this.container.appendChild(body);
+
+    var captchaContainer = this.container.querySelector('#captcha-container');
+    this.initBotDetectCaptcha(captchaContainer);
+
+    
     document.body.appendChild(this.container);
+};
+
+HiNetWidget.prototype.initBotDetectCaptcha = function(container) {
+    //http://localhost:35101/Home/Captcha
+    var headers = new Headers();
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    headers.append('Access-Control-Allow-Headers', 'Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization')
+    const requestOptions = {
+        method: "GET",
+        headers: headers
+    }
+    // Send POST request to API, get response and set the reponse as paragraph text
+    fetch(this.options.captchaUrl, requestOptions).then(res => res.html()).then(data => {
+        console.log(data)
+    }).catch(() => {
+        
+    })//.finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
 };
 
 HiNetWidget.prototype.sendData = function(){
@@ -140,6 +166,7 @@ HiNetWidget.prototype.sendData = function(){
         FullName : document.getElementById("FullName").value,
 
     }
+    var headers = new Headers();
     const requestOptions = {
         method: this.options.method,
         body: {
@@ -147,7 +174,7 @@ HiNetWidget.prototype.sendData = function(){
         }
     }
     // Send POST request to API, get response and set the reponse as paragraph text
-    fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
+    fetch(this.options.action, requestOptions).then(res => res.json()).then(data => {
 
     }).catch(() => {
         
