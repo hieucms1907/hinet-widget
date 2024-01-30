@@ -48,7 +48,7 @@ HiNetWidget.prototype.createWidgetContainer = function() {
     header.className = "hinet-widget-header";
 
     var headerTitle = document.createElement("h2");
-    headerTitle.style = "display: inline-block;margin: 0;padding: 0;";
+    headerTitle.style = "display: inline-block;margin: 0;padding: 0;font-size: 24px;";
     headerTitle.textContent = this.options.title || 'Gửi báo cáo'
     header.appendChild(headerTitle);
 
