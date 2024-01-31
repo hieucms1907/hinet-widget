@@ -154,13 +154,8 @@ HiNetWidget.prototype.initBotDetectCaptcha = function(container) {
         console.log(data)
     }).catch(() => {
         
-    })//.finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+    }).finally((e) => console.log(e));
 
-    // const req = new XMLHttpRequest();
-    // req.open("GET", this.options.captchaUrl, false);
-    // req.send(null);
-    // console.log(req.status);
-    // console.log(req.responseText);
 };
 
 HiNetWidget.prototype.sendData = function(){
