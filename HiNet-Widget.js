@@ -150,7 +150,7 @@ HiNetWidget.prototype.initBotDetectCaptcha = function(container) {
         method: "GET"
     }
 
-    fetch(this.options.captchaUrl, null).then(res => res.html()).then(data => {
+    fetch(this.options.captchaUrl, null).then(res => res).then(data => {
         console.log(data)
     }).catch(() => {
         
