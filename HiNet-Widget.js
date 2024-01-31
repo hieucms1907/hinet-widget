@@ -149,18 +149,18 @@ HiNetWidget.prototype.initBotDetectCaptcha = function(container) {
     const requestOptions = {
         method: "GET"
     }
-    // Send POST request to API, get response and set the reponse as paragraph text
-    // fetch(this.options.captchaUrl, null).then(res => res.html()).then(data => {
-    //     console.log(data)
-    // }).catch(() => {
-        
-    // })//.finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
 
-    const req = new XMLHttpRequest();
-    req.open("GET", this.options.captchaUrl, true);
-    req.send(null);
-    console.log(req.status);
-    console.log(req.responseText);
+    fetch(this.options.captchaUrl, null).then(res => res.html()).then(data => {
+        console.log(data)
+    }).catch(() => {
+        
+    })//.finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+
+    // const req = new XMLHttpRequest();
+    // req.open("GET", this.options.captchaUrl, false);
+    // req.send(null);
+    // console.log(req.status);
+    // console.log(req.responseText);
 };
 
 HiNetWidget.prototype.sendData = function(){
