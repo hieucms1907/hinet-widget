@@ -157,7 +157,7 @@ HiNetWidget.prototype.initBotDetectCaptcha = function(container) {
     // })//.finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
 
     const req = new XMLHttpRequest();
-    req.open("GET", this.options.captchaUrl, false);
+    req.open("GET", this.options.captchaUrl, true);
     req.send(null);
     console.log(req.status);
     console.log(req.responseText);
